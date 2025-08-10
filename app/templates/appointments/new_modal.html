@@ -1,0 +1,41 @@
+<div class="fixed inset-0 bg-black/40 flex items-center justify-center" id="modal">
+  <div class="bg-white rounded shadow-lg p-6 w-full max-w-lg">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-xl font-semibold">Nova consulta</h2>
+      <button class="text-gray-500" onclick="document.getElementById('modal').remove()">✕</button>
+    </div>
+    <form id="create-appt" class="space-y-3" onsubmit="return submitAppt(event)">
+      <div class="grid grid-cols-2 gap-3">
+        <input class="border rounded px-3 py-2" type="number" name="doctor_id" placeholder="ID Médico" required />
+        <input class="border rounded px-3 py-2" type="number" name="patient_id" placeholder="ID Paciente" required />
+        <input class="border rounded px-3 py-2" type="datetime-local" name="start_datetime" required />
+        <input class="border rounded px-3 py-2" type="datetime-local" name="end_datetime" required />
+        <input class="border rounded px-3 py-2 col-span-2" type="text" name="notes" placeholder="Notas" />
+      </div>
+      <div id="error" class="text-red-600"></div>
+      <button class="bg-green-600 text-white px-4 py-2 rounded">Criar</button>
+    </form>
+  </div>
+</div>
+<script>
+async function submitAppt(e){
+  e.preventDefault();
+  const form = e.target;
+  const payload = Object.fromEntries(new FormData(form).entries());
+  payload.doctor_id = Number(payload.doctor_id);
+  payload.patient_id = Number(payload.patient_id);
+  try{
+    const r = await fetch('/api/appointments/create', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+    if(!r.ok){
+      const data = await r.json();
+      document.getElementById('error').textContent = data.detail || 'Erro';
+      return false;
+    }
+    document.getElementById('modal').remove();
+    window.toast('Consulta criada com sucesso');
+  }catch(err){
+    document.getElementById('error').textContent = 'Erro de rede';
+  }
+  return false;
+}
+</script>

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Paciente{% endblock %}
+{% block content %}
+<h1 class="text-2xl font-semibold mb-4">{{ patient.name }}</h1>
+<div class="grid grid-cols-2 gap-4">
+  <div class="bg-white rounded shadow p-4">
+    <div><span class="font-semibold">Documento:</span> {{ patient.document }}</div>
+    <div><span class="font-semibold">Telefone:</span> {{ patient.phone }}</div>
+    <div><span class="font-semibold">Email:</span> {{ patient.email }}</div>
+    <div><span class="font-semibold">Nascimento:</span> {{ patient.birthdate }}</div>
+    <div class="mt-2"><span class="font-semibold">Notas:</span> {{ patient.notes }}</div>
+  </div>
+  <div class="bg-white rounded shadow p-4">
+    <h2 class="font-semibold mb-2">Histórico de consultas</h2>
+    <div class="text-gray-500">Em breve</div>
+  </div>
+</div>
+{% endblock %}

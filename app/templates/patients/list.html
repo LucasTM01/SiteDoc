@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Pacientes{% endblock %}
+{% block content %}
+<h1 class="text-2xl font-semibold mb-4">Pacientes</h1>
+<form method="get" class="mb-4">
+  <input class="border rounded px-3 py-2" type="text" name="q" placeholder="Buscar..." value="{{ q }}" />
+  <button class="bg-gray-800 text-white px-3 py-2 rounded">Buscar</button>
+</form>
+<table class="w-full bg-white rounded shadow">
+  <thead>
+    <tr class="text-left border-b">
+      <th class="p-3">Nome</th>
+      <th class="p-3">Documento</th>
+      <th class="p-3">Telefone</th>
+      <th class="p-3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in patients %}
+    <tr class="border-b hover:bg-gray-50">
+      <td class="p-3">{{ p.name }}</td>
+      <td class="p-3">{{ p.document }}</td>
+      <td class="p-3">{{ p.phone }}</td>
+      <td class="p-3 text-right"><a class="text-blue-600" href="/patients/{{ p.id }}">Ver</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div class="mt-6">
+  <h2 class="font-semibold mb-2">Novo paciente</h2>
+  <form method="post" action="/patients/new" class="grid grid-cols-2 gap-3">
+    <input class="border rounded px-3 py-2" type="text" name="name" placeholder="Nome" required />
+    <input class="border rounded px-3 py-2" type="date" name="birthdate" required />
+    <input class="border rounded px-3 py-2" type="text" name="document" placeholder="Documento" required />
+    <input class="border rounded px-3 py-2" type="text" name="phone" placeholder="Telefone" required />
+    <input class="border rounded px-3 py-2" type="email" name="email" placeholder="Email" required />
+    <input class="border rounded px-3 py-2 col-span-2" type="text" name="notes" placeholder="Notas" />
+    <button class="bg-green-600 text-white px-4 py-2 rounded col-span-2">Salvar</button>
+  </form>
+</div>
+{% endblock %}
