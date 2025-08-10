@@ -1,0 +1,10 @@
+{
+  "specialties": [
+    "Cardiologia", "Dermatologia", "Pediatria", "Ortopedia", "Ginecologia"
+  ],
+  "clinics": [
+    "Clínica Central", "Saúde+", "Vida Plena", "Bem Estar", "Cuidar Mais"
+  ],
+  "patient_first_names": ["Ana", "Bruno", "Carla", "Diego", "Eva", "Felipe", "Giovana", "Heitor", "Iara", "João", "Karen", "Lucas", "Marina", "Nina", "Otávio", "Paula", "Quésia", "Rafael", "Sofia", "Thiago", "Ursula", "Vitor", "Wesley", "Xavier", "Yara", "Zeca"],
+  "patient_last_names": ["Silva", "Souza", "Oliveira", "Santos", "Pereira", "Lima", "Gomes", "Ribeiro", "Almeida", "Costa"]
+}

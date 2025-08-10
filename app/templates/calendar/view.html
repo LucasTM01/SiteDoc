@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Agenda - {{ doctor.id }}{% endblock %}
+{% block content %}
+<div class="flex items-center justify-between mb-4">
+  <div>
+    <h1 class="text-2xl font-semibold">Agenda: {{ doctor.clinic_name }} - {{ doctor.specialty }}</h1>
+    <div class="text-gray-600">Médico ID: {{ doctor.id }}</div>
+  </div>
+  <div class="space-x-2">
+    <a class="px-3 py-2 rounded border" href="?mode=day&d={{ today }}">Dia</a>
+    <a class="px-3 py-2 rounded border" href="?mode=week&d={{ today }}">Semana</a>
+    <a class="px-3 py-2 rounded border" href="?mode=month&d={{ today }}">Mês</a>
+  </div>
+</div>
+<div class="bg-white rounded shadow p-4">
+  <div>Modo: <span class="font-semibold">{{ mode }}</span> — Data base: {{ today }}</div>
+  <div class="mt-4 text-gray-500">Visualização simplificada para MVP</div>
+  <div class="mt-4">
+    <a href="/appointments/new" hx-get="/appointments/new" hx-target="#modal" class="bg-blue-600 text-white px-4 py-2 rounded">Nova consulta</a>
+  </div>
+</div>
+<div id="modal"></div>
+{% endblock %}

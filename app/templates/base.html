@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Agenda Médica{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <script src="/static/js/app.js" defer></script>
+</head>
+<body class="h-full bg-gray-50 text-gray-900">
+  <div class="min-h-full">
+    <div class="flex">
+      <aside class="w-64 min-h-screen bg-white border-r border-gray-200 p-4">
+        <a href="/" class="block text-xl font-semibold mb-6">Agenda Médica</a>
+        <nav class="space-y-2">
+          <a class="block px-3 py-2 rounded hover:bg-gray-100" href="/patients/">Pacientes</a>
+          <a class="block px-3 py-2 rounded hover:bg-gray-100" href="/doctors/">Médicos</a>
+          <a class="block px-3 py-2 rounded hover:bg-gray-100" href="/">Agenda</a>
+          <a class="block px-3 py-2 rounded hover:bg-gray-100" href="/logout">Sair</a>
+        </nav>
+      </aside>
+      <main class="flex-1 p-6">
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+  </div>
+  <div id="toast" class="fixed bottom-4 right-4 hidden bg-gray-900 text-white px-4 py-2 rounded"></div>
+</body>
+</html>

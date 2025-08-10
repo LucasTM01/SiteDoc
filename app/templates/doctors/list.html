@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Médicos{% endblock %}
+{% block content %}
+<h1 class="text-2xl font-semibold mb-4">Médicos</h1>
+<table class="w-full bg-white rounded shadow">
+  <thead>
+    <tr class="text-left border-b">
+      <th class="p-3">Nome</th>
+      <th class="p-3">Especialidade</th>
+      <th class="p-3">CRM</th>
+      <th class="p-3">Clínica</th>
+      <th class="p-3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for d in doctors %}
+    <tr class="border-b hover:bg-gray-50">
+      <td class="p-3">{{ users[d.user_id].name }}</td>
+      <td class="p-3">{{ d.specialty }}</td>
+      <td class="p-3">{{ d.crm }}</td>
+      <td class="p-3">{{ d.clinic_name }}</td>
+      <td class="p-3 text-right"><a class="text-blue-600" href="/calendar/{{ d.id }}">Agenda</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
